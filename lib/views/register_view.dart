@@ -35,49 +35,44 @@ class _RegisterViewState extends State<RegisterView> {
         title: const Text('Register'),
         backgroundColor: Colors.blue,
       ),
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform,
-        ),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextField(
-                      decoration: const InputDecoration(
-                        hintText: 'Enter Email',
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      controller: _email,
-                      autocorrect: false,
-                    ),
-                    TextField(
-                      decoration: const InputDecoration(
-                        hintText: 'Enter Password',
-                      ),
-                      obscureText: true,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      controller: _password,
-                    ),
-                    TextButton(
-                      child: const Text('Register'),
-                      onPressed: () async {
-                        final email = _email.text;
-                        final password = _password.text;
-                        createUser(email, password);
-                      },
-                    ),
-                  ],
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextField(
+            decoration: const InputDecoration(
+              hintText: 'Enter Email',
+            ),
+            keyboardType: TextInputType.emailAddress,
+            controller: _email,
+            autocorrect: false,
+          ),
+          TextField(
+            decoration: const InputDecoration(
+              hintText: 'Enter Password',
+            ),
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
+            controller: _password,
+          ),
+          TextButton(
+            child: const Text('Register'),
+            onPressed: () async {
+              final email = _email.text;
+              final password = _password.text;
+              createUser(email, password);
+            },
+          ),
+          TextButton(
+            child: const Text('Already registered? Login now'),
+            onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                '/login/',
+                (route) => false,
               );
-            default:
-              return const Text('Loading');
-          }
-        },
+            },
+          ),
+        ],
       ),
     );
   }
