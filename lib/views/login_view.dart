@@ -1,9 +1,5 @@
-import 'dart:math';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:learningdart/firebase_options.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -34,7 +30,10 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text(
+          'Login',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.blue,
       ),
       body: Column(
@@ -85,7 +84,7 @@ class _LoginViewState extends State<LoginView> {
           .signInWithEmailAndPassword(email: email, password: password);
       if (userCredential.additionalUserInfo != null) {
         Navigator.of(context).pushNamedAndRemoveUntil(
-          '/home/',
+          '/notes/',
           (route) => false,
         );
       }

@@ -1,15 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class NotesView extends StatefulWidget {
+  const NotesView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<NotesView> createState() => _NotesViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _NotesViewState extends State<NotesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
