@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "70440230712",
-    "project_id": "ryanmlk-learningdart",
-    "storage_bucket": "ryanmlk-learningdart.appspot.com"
+    "project_id": "ryanmlk-flutter_course",
+    "storage_bucket": "ryanmlk-flutter_course.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:70440230712:android:e81970a7c97e269961abcd",
         "android_client_info": {
-          "package_name": "com.example.learningdart"
+          "package_name": "com.example.flutter_course"
         }
       },
       "oauth_client": [

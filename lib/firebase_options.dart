@@ -53,17 +53,18 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyCYaxpotHQ0s4tutu8KOc1t0HYNUtr1m1o',
     appId: '1:70440230712:android:e81970a7c97e269961abcd',
     messagingSenderId: '70440230712',
-    projectId: 'ryanmlk-learningdart',
-    storageBucket: 'ryanmlk-learningdart.appspot.com',
+    projectId: 'ryanmlk-flutter_course',
+    storageBucket: 'ryanmlk-flutter_course.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAHDaw54VTo7LSFV9oG-JCWMRW_NZVc4Oc',
     appId: '1:70440230712:ios:57cbd68500f05e0a61abcd',
     messagingSenderId: '70440230712',
-    projectId: 'ryanmlk-learningdart',
-    storageBucket: 'ryanmlk-learningdart.appspot.com',
-    iosClientId: '70440230712-143tuivnesaul6ovur0v4ikjca04dtls.apps.googleusercontent.com',
-    iosBundleId: 'com.example.learningdart',
+    projectId: 'ryanmlk-flutter_course',
+    storageBucket: 'ryanmlk-flutter_course.appspot.com',
+    iosClientId:
+        '70440230712-143tuivnesaul6ovur0v4ikjca04dtls.apps.googleusercontent.com',
+    iosBundleId: 'com.example.flutter_course',
   );
 }

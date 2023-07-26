@@ -1,6 +1,6 @@
 {
-    "name": "learningdart",
-    "short_name": "learningdart",
+    "name": "flutter_course",
+    "short_name": "flutter_course",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

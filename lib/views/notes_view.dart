@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:learningdart/constants/routes.dart';
+import 'package:flutter_course/constants/routes.dart';
 
 enum MenuAction { logout }
 
