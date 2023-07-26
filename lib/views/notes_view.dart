@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:learningdart/constants/routes.dart';
 
 enum MenuAction { logout }
 
@@ -80,7 +81,7 @@ Future<bool> showLogOutDialog(BuildContext context) {
 
 redirectLogin(BuildContext context) {
   Navigator.of(context).pushNamedAndRemoveUntil(
-    '/login/',
+    loginRoute,
     (route) => false,
   );
 }
