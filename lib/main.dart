@@ -6,8 +6,10 @@ import 'package:learningdart/views/notes_view.dart';
 import 'package:learningdart/views/login_view.dart';
 import 'package:learningdart/views/register_view.dart';
 import 'package:learningdart/views/verify_email_view.dart';
+import 'dart:developer' as devtools show log;
 
 void main() {
+  devtools.log('Test');
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
     title: 'Flutter Demo',
@@ -30,32 +32,27 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Homepage'),
-          backgroundColor: Colors.blue,
-        ),
-        body: FutureBuilder(
-          future: Firebase.initializeApp(
-            options: DefaultFirebaseOptions.currentPlatform,
-          ),
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.done:
-                final user = FirebaseAuth.instance.currentUser;
-                if (user != null) {
-                  if (user.emailVerified) {
-                    return const NotesView();
-                  } else {
-                    return const VerifyEmailView();
-                  }
-                } else {
-                  return const LoginView();
-                }
-              default:
-                return const CircularProgressIndicator();
+    return FutureBuilder(
+      future: Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      ),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.done:
+            final user = FirebaseAuth.instance.currentUser;
+            if (user != null) {
+              if (user.emailVerified) {
+                return const NotesView();
+              } else {
+                return const VerifyEmailView();
+              }
+            } else {
+              return const LoginView();
             }
-          },
-        ));
+          default:
+            return const CircularProgressIndicator();
+        }
+      },
+    );
   }
 }
