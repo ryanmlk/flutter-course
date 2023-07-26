@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_course/constants/routes.dart';
+import 'package:flutter_course/services/auth/auth_exceptions.dart';
+import 'package:flutter_course/services/auth/auth_service.dart';
 import '../utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
@@ -63,7 +64,7 @@ class _RegisterViewState extends State<RegisterView> {
             onPressed: () async {
               final email = _email.text;
               final password = _password.text;
-              createUser(email, password);
+              createUser(email, password, context);
             },
           ),
           TextButton(
@@ -80,46 +81,34 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 
-  createUser(email, password) async {
+  createUser(email, password, context) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await AuthService.firebase().createUser(
         email: email,
         password: password,
       );
-      final user = FirebaseAuth.instance.currentUser;
-      user?.sendEmailVerification();
+      AuthService.firebase().sendEmailVerification();
       if (!context.mounted) return;
       Navigator.of(context).pushNamed(verifyRoute);
-    } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'weak-password':
-          await showErrorDialog(
-            context,
-            'Password not strong enough',
-          );
-          break;
-        case 'email-already-in-use':
-          await showErrorDialog(
-            context,
-            'Email is already in use',
-          );
-          break;
-        case 'invalid-email':
-          await showErrorDialog(
-            context,
-            'Invalid Email',
-          );
-          break;
-        default:
-          await showErrorDialog(
-            context,
-            'Registration Error: ${e.code}',
-          );
-      }
-    } catch (e) {
+    } on WeakPasswordAuthException {
       await showErrorDialog(
         context,
-        'Registration error: ${e.toString()}',
+        'Password not strong enough',
+      );
+    } on EmailAlreadyInUseAuthException {
+      await showErrorDialog(
+        context,
+        'Email is already in use',
+      );
+    } on InvalidEmailAuthException {
+      await showErrorDialog(
+        context,
+        'Invalid Email',
+      );
+    } on GenericAuthException {
+      await showErrorDialog(
+        context,
+        'Failed to register',
       );
     }
   }
