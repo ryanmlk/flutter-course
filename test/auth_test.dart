@@ -120,6 +120,7 @@ class MockAuthProvider implements AuthProvider {
     if (password == 'foobar') throw WrongPasswordAuthException();
     await Future.delayed(const Duration(seconds: 1));
     const user = AuthUser(
+      id: '3424-zasd-234a',
       isEmailVerified: false,
       email: 'foo@bar.com',
     );
@@ -141,6 +142,7 @@ class MockAuthProvider implements AuthProvider {
     final user = _user;
     if (user == null) throw UserNotFoundAuthException();
     const newUser = AuthUser(
+      id: '3424-zasd-234a',
       isEmailVerified: true,
       email: 'foo@bar.com',
     );
