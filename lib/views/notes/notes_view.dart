@@ -98,10 +98,3 @@ class _NotesViewState extends State<NotesView> {
     );
   }
 }
-
-redirectLogin(BuildContext context) {
-  Navigator.of(context).pushNamedAndRemoveUntil(
-    loginRoute,
-    (route) => false,
-  );
-}
