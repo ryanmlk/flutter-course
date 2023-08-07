@@ -13,11 +13,14 @@ import 'package:flutter_course/views/login_view.dart';
 import 'package:flutter_course/views/register_view.dart';
 import 'package:flutter_course/views/verify_email_view.dart';
 import 'dart:developer' as devtools show log;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   devtools.log('Test');
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
+    supportedLocales: AppLocalizations.supportedLocales,
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
     title: 'Flutter Demo',
     theme: ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

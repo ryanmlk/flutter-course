@@ -1,0 +1,13 @@
+{
+    "my_title":  "My title goes here (SIN)",
+
+    "notes_title": "{count, plural, =0{No SI notes yet} =1{1 SI note} other{{count} SI notes}}",
+    "@notes_title": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "example": "3 notes"
+            }
+        }
+    }
+}
